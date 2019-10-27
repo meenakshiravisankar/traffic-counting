@@ -8,10 +8,10 @@ The given dataset has 4953 frames at ~10fps with (width,height) = (1280,720)
 
 ### TODO
 - [x] Extract images from video
-- [ ] Detect all types of vehicles in the video
+- [x] Detect all types of vehicles in the video
 - [ ] Track vehicles and count them
 - [ ] Road segmentation
-- [ ] Pedestrian detection
+- [x] Pedestrian detection
 - [ ] Track pedestrians over crossing and count them
 - [ ] Add time information
 - [ ] Subcategory counts (optional)
@@ -20,16 +20,15 @@ The given dataset has 4953 frames at ~10fps with (width,height) = (1280,720)
 ### TEST CASES
 - [ ] Occluding vehicles
 - [ ] Lane misclassification
-- [ ] Vehicles counted from non-interest areas
-
-
-
+- [x] Vehicles counted from non-interest areas
 
 ### USAGE
 **Dependencies**
 1. Opencv (version>3)
 2. Keras
-
+3. Tensorflow gpu (version<2)
+4. Numpy
+   
 **Method 1**
 
 Perform object detection for both vehicles and pedestrians. Maintain count when entering, present and moving out of the frame. Assumption is that the traffic flow is in horizontal direction and pedestrian crossing is in vertical.
@@ -43,11 +42,11 @@ To run
 ```
 python3 yolo_video.py --input <path-to-video>
 ```
-The computation for object detection is 0.6s per frame.
+The computation for object detection is ~0.23s per frame.
 
 ### OTHER IDEAS
 1. Lane classification - adapt with different places 
 
 ### CREDITS
 1. Yolov3 - [link](https://github.com/pjreddie/darknet)
-2. 
+ 
