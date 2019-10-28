@@ -9,14 +9,11 @@ The given dataset has 4953 frames at ~10fps with (width,height) = (1280,720)
 ### TODO
 - [x] Extract images from video
 - [x] Detect all types of vehicles in the video
-- [x] Track vehicles and count them
-~~- [ ] Road segmentation~~
+- [x] Counting vehicles
 - [x] Pedestrian detection
 - [ ] Track pedestrians over crossing and count them
 - [ ] Stabilize the count of vehicles
 - [x] Add time information
-~~- [ ] Subcategory counts (optional)~~
-~~- [ ] Pedestrians on sidewalk/crossing classification~~
 
 ### FAILURE CASES
 1. Occluding vehicles
@@ -30,6 +27,8 @@ The given dataset has 4953 frames at ~10fps with (width,height) = (1280,720)
 3. Tensorflow gpu (version<2)
 4. Numpy
 5. Tesseract-ocr
+6. Numba
+7. Skimage
    
 Install tesseract for OCR
 ```
