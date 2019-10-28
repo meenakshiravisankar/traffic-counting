@@ -1,5 +1,6 @@
 import cv2
 import os
+import pytesseract
 
 def get_property(path_to_video) :
     """
@@ -23,7 +24,7 @@ def get_property(path_to_video) :
     frames = video.get(cv2.CAP_PROP_FRAME_COUNT)
 
     video.release()
-    return int(fps), frames, width, height
+    return int(fps), int(frames), int(width), int(height)
 
 def display_video(path_to_video) : 
     """
@@ -114,11 +115,27 @@ def create_video(path_to_images, path_to_video, fps, seconds) :
     video.release()
 
 
+
+def get_time(path_to_image) :
+    """
+    Crops the time-in-video and returns the timestamp
+
+    """
+    frame = cv2.imread(path_to_image, 0)
+    # Crop the time portion
+    frame = frame[0:25,0:220]
+    # perform ocr
+    text = pytesseract.image_to_string(frame)  
+    return text
+    
+
+
 path_to_video = "../files/videos/1569843500.mp4"
 path_to_new_video = "../files/videos/raw60.mp4"
 path_to_images = "../files/images"
+path_to_image = "../files/images/0.jpg"
 
 fps, frames, width, height = get_property(path_to_video)
-print("FPS, frames, width, height", fps, frames, width, height)
 # extract_images(path_to_video, path_to_images)
 # create_video(path_to_images, path_to_new_video, fps, 60)
+print(get_time(path_to_image))
